@@ -1,15 +1,15 @@
 package ru.geekbrains.main.site.at;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-@Disabled
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
 public class SearchTest extends BaseTest {
 
     @BeforeAll
@@ -33,62 +33,62 @@ public class SearchTest extends BaseTest {
     void professionsCountTest() {
         WebElement tab = driver
                 .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='professions']"));
-        Assertions.assertTrue(tab.isDisplayed());
+        assertThat(true, is(tab.isDisplayed()));
         WebElement count = driver
                 .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='professions'] > span"));
-        Assertions.assertTrue(count.isDisplayed());
-        Assertions.assertTrue(Integer.parseInt(count.getText())>=2);
+        assertThat(true, is(count.isDisplayed()));
+        assertThat(2, lessThan(Integer.parseInt(count.getText())));
     }
 
     @Test
     void coursesCountTest() {
         WebElement tab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='courses']"));
-        Assertions.assertTrue(tab.isDisplayed());
+        assertThat(true, is(tab.isDisplayed()));
         WebElement count = driver
                 .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='courses'] > span"));
-        Assertions.assertTrue(count.isDisplayed());
-        Assertions.assertTrue(Integer.parseInt(count.getText())>15);
+        assertThat(true, is(count.isDisplayed()));
+        assertThat(Integer.parseInt(count.getText()), greaterThan(15));
     }
 
     @Test
     void webinarsCountTest() {
         WebElement tab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='webinars']"));
-        Assertions.assertTrue(tab.isDisplayed());
+        assertThat(true, is(tab.isDisplayed()));
         WebElement count = driver
                 .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='webinars'] > span"));
-        Assertions.assertTrue(count.isDisplayed());
-        Assertions.assertTrue(Integer.parseInt(count.getText())>180);
-        Assertions.assertTrue(Integer.parseInt(count.getText())<300);
+        assertThat(true, is(count.isDisplayed()));
+        assertThat(Integer.parseInt(count.getText()), greaterThan(180));
+        assertThat(Integer.parseInt(count.getText()), lessThan(300));
     }
 
     @Test
     void blogsTest() {
         WebElement tab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='blogs']"));
-        Assertions.assertTrue(tab.isDisplayed());
+        assertThat(true, is(tab.isDisplayed()));
         WebElement count = driver
                 .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='blogs'] > span"));
-        Assertions.assertTrue(count.isDisplayed());
-        Assertions.assertTrue(Integer.parseInt(count.getText())>300);
+        assertThat(true, is(count.isDisplayed()));
+        assertThat(Integer.parseInt(count.getText()), greaterThan(300));
     }
 
     @Test
     void forumsCountTest() {
         WebElement tab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='forums']"));
-        Assertions.assertTrue(tab.isDisplayed());
+        assertThat(true, is(tab.isDisplayed()));
         WebElement count = driver
                 .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='forums'] > span"));
-        Assertions.assertTrue(count.isDisplayed());
-        Assertions.assertFalse(Integer.parseInt(count.getText())==350);
+        assertThat(true, is(count.isDisplayed()));
+        assertThat(Integer.parseInt(count.getText()), not(350));
     }
 
     @Test
     void testsCountTest() {
         WebElement tab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='tests']"));
-        Assertions.assertTrue(tab.isDisplayed());
+        assertThat(true, is(tab.isDisplayed()));
         WebElement count = driver
                 .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='tests'] > span"));
-        Assertions.assertTrue(count.isDisplayed());
-        Assertions.assertFalse(Integer.parseInt(count.getText())==0);
+        assertThat(true, is(count.isDisplayed()));
+        assertThat(Integer.parseInt(count.getText()), not(0));
     }
 
 }
