@@ -2,12 +2,14 @@ package ru.geekbrains.main.site.at;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.concurrent.TimeUnit;
 
+@Disabled
 public class NavigationTest extends BaseTest {
 
     @BeforeEach

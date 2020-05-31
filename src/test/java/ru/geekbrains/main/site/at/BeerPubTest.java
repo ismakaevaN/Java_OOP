@@ -1,10 +1,8 @@
 package ru.geekbrains.main.site.at;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+@Disabled
 public class BeerPubTest {
 
     @BeforeEach
